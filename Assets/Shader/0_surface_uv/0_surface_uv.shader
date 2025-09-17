@@ -85,7 +85,10 @@ Shader "Custom/0_surface_uv"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             /* Semantics について
-            頂点属性やシェーダーステージ間でデータを受け渡すためのキーワード
+            ref: https://docs.unity3d.com/ja/2021.3/Manual/SL-ShaderSemantics.html
+            ref: https://claude.ai/share/01420e1f-a004-4486-addf-3ee190bd3ce2
+            データの意味をグラフィックスパイプラインに伝える識別子。
+            HLSL言語のSemanticsの規約に則り、Unity側が適切にデータを解釈(習得)・処理できるようにする。
             頂点属性セマンティクス:
                 POSITION    頂点の位置
                 NORMAL      頂点の法線
