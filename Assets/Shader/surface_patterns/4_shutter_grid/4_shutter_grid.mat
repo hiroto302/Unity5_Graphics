@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 4_shutter_grid
-  m_Shader: {fileID: 4800000, guid: 5d8c18abd2cac4c48b393bf0cee45ba9, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0f3e46ebf0a1842b5b9026ce45a46ae5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -100,6 +100,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Grid: 10
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

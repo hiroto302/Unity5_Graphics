@@ -2,6 +2,24 @@ Shader "patterns/3_gradient_color"
 {
     Properties
     {
+        /* NOTE: Propertiesについて
+        Properties(属性 オプション):
+            実行時に変更可能なパラメータを定義
+            Material Inspectorに表示される設定
+            例: 色、テクスチャ、数値スライダー等
+        */
+
+        /* Properties で使用可能なデータ型
+            Float浮動小数点数_Value("Value", Float) = 1.0
+            Range範囲指定付き浮動小数点数_Range("Range", Range(0.0, 1.0)) = 0.5
+            Int整数_Count("Count", Int) = 5
+            Colorカラー_Color("Color", Color) = (1,1,1,1)
+            Vectorベクター_Offset("Offset", Vector) = (0,0,0,0)
+            2Dテクスチャ_MainTex("Texture", 2D) = "white" {}
+            など
+        参考: https://docs.unity3d.com/ja/current/Manual/SL-Properties.html
+        */
+        _Grid("Grid", Range(0.0, 10.0)) = 10.0
     }
     SubShader
     {
@@ -35,6 +53,10 @@ Shader "patterns/3_gradient_color"
                 float2 uv : TEXCOORD0;
             };
 
+            // Propertiesで定義した変数を参照するための宣言
+            // 内部変数宣言: シェーダー内で使用するために必須
+            half _Grid;
+
             v2f vert (appdata input)
             {
                 v2f o;
@@ -46,8 +68,7 @@ Shader "patterns/3_gradient_color"
 
             half4 frag (v2f i) : SV_Target
             {
-                half grid = 10.0;
-                half strength = fmod(i.uv.y * 10, 1.0);
+                half strength = fmod(i.uv.y * _Grid, 1.0);
                 half4 col = half4(strength, strength, strength, 1.0);
                 return col;
             }
