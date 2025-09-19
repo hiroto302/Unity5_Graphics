@@ -1,0 +1,60 @@
+Shader "patterns/3_gradient_color"
+{
+    Properties
+    {
+    }
+    SubShader
+    {
+        Tags
+        {
+            "RenderType"="Opaque"
+            "RenderPipeline"="UniversalPipeline"
+        }
+
+        Pass
+        {
+            Name "ForwardUnlit"
+            Tags { "LightMode"="UniversalForward" }
+
+            HLSLPROGRAM
+
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            v2f vert (appdata input)
+            {
+                v2f o;
+
+                o.vertex = TransformObjectToHClip(input.vertex.xyz);
+                o.uv = input.uv;
+                return o;
+            }
+
+            half4 frag (v2f i) : SV_Target
+            {
+                // UnityのShaderでは、'half'型は16ビット浮動小数点で、'float'型は32ビットです。
+                // モバイルやパフォーマンス重視の場合は'half'を使いますが、PCや高精度が必要な場合は'float'も使えます。
+                // Universal Render Pipeline (URP)では、どちらも利用可能です。
+
+                half strength = i.uv.x;
+                half4 col = half4(strength, strength, strength, 1.0);
+                return col;
+            }
+            ENDHLSL
+        }
+    }
+}
