@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 3_gradient_color
-  m_Shader: {fileID: 4800000, guid: 27222511d26a146c0923dc394f8605d4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 5d8c18abd2cac4c48b393bf0cee45ba9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
