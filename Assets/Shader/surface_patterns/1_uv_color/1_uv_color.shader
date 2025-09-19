@@ -1,4 +1,4 @@
-Shader "patterns/0_uv_color"
+Shader "patterns/1_uv_color"
 {
     Properties
     {
