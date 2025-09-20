@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 5_shutter_grid_solid
+  m_Name: 6_shutter_grid_x2
   m_Shader: {fileID: 4800000, guid: 8b9b2a89bf0214e48a89ea068b8529e4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -96,12 +96,12 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Edge: 0.641
+    - _Edge: 0.839
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Grid: 10
+    - _Grid: 6.66
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
