@@ -1,4 +1,4 @@
-Shader "patterns/3_gradient_color"
+Shader "patterns/4_shutter_grid"
 {
     Properties
     {
@@ -7,15 +7,24 @@ Shader "patterns/3_gradient_color"
             実行時に変更可能なパラメータを定義
             Material Inspectorに表示される設定
             例: 色、テクスチャ、数値スライダー等
+
+        宣言の形式
+            [optional: attribute] name("display text in Inspector", type name) = default value
         */
 
         /* Properties で使用可能なデータ型
-            Float浮動小数点数_Value("Value", Float) = 1.0
-            Range範囲指定付き浮動小数点数_Range("Range", Range(0.0, 1.0)) = 0.5
-            Int整数_Count("Count", Int) = 5
-            Colorカラー_Color("Color", Color) = (1,1,1,1)
-            Vectorベクター_Offset("Offset", Vector) = (0,0,0,0)
-            2Dテクスチャ_MainTex("Texture", 2D) = "white" {}
+            Float浮動小数点数
+                _Value("Value", Float) = 1.0
+            Range範囲指定付き浮動小数点数
+                _Range("Range", Range(0.0, 1.0)) = 0.5
+            Int整数
+                _Count("Count", Int) = 5
+            Colorカラー
+                _Color("Color", Color) = (1,1,1,1)
+            Vectorベクター
+                _Offset("Offset", Vector) = (0,0,0,0)
+            2Dテクスチャ
+                _MainTex("Texture", 2D) = "white" {}
             など
         参考: https://docs.unity3d.com/ja/current/Manual/SL-Properties.html
         */
