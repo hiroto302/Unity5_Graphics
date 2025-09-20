@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 7_grid_point
-  m_Shader: {fileID: 4800000, guid: 8f86fbdfbab314a679077fb0b16e306d, type: 3}
+  m_Name: 8_grid_square
+  m_Shader: {fileID: 4800000, guid: 344e03c216fce40a29f25913bb9c92d5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -97,6 +97,8 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _Edge: 0.8
+    - _EdgeX: 0.183
+    - _EdgeY: 0.504
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
