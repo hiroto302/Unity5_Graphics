@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 17_gradient_color_separate
-  m_Shader: {fileID: 4800000, guid: 9397b3da93e20447ab35b580b572bbdc, type: 3}
+  m_Name: 18_gradient_color_separate_x2
+  m_Shader: {fileID: 4800000, guid: d7446fc7e5fb24a66bbb2a0efe001cbb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
