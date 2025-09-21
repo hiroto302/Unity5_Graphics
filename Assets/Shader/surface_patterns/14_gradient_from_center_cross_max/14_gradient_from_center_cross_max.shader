@@ -1,4 +1,4 @@
-Shader "patterns/13_gradient_from_center_cross_min"
+Shader "patterns/14_gradient_from_center_cross_max"
 {
     Properties
     {
@@ -47,12 +47,13 @@ Shader "patterns/13_gradient_from_center_cross_min"
                 return o;
             }
 
+            //ref: https://claude.ai/public/artifacts/b234980c-44b5-4220-baec-0707565c9cda
             half4 frag (v2f i) : SV_Target
             {
                 half strengthX = abs(i.uv.x - _Offset);
                 half strengthY = abs(i.uv.y - _Offset);
 
-                half minStrength = min(strengthX, strengthY);
+                half minStrength = max(strengthX, strengthY);
 
                 half4 col = half4(minStrength, minStrength, minStrength, 1.0);
                 return col;
