@@ -1,4 +1,4 @@
-Shader "patterns/11_gradient_from_center"
+Shader "patterns/12 gradient_from_center_cross"
 {
     Properties
     {
@@ -49,9 +49,12 @@ Shader "patterns/11_gradient_from_center"
 
             half4 frag (v2f i) : SV_Target
             {
-                half strength = abs(i.uv.x - _Offset);
+                half strengthX = abs(i.uv.x - _Offset);
+                half strengthY = abs(i.uv.y - _Offset);
 
-                half4 col = half4(strength, strength, strength, 1.0);
+                half combination = strengthX + strengthY;
+
+                half4 col = half4(combination, combination, combination, 1.0);
                 return col;
             }
             ENDHLSL

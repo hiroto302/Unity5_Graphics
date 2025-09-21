@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 11_gradient_from_center
+  m_Name: 12_gradient_from_center_cross
   m_Shader: {fileID: 4800000, guid: a7dc226790a9d43efa610ba7a82a1bb0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
