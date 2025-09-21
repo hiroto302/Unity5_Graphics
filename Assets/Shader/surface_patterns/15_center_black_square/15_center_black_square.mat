@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 14_gradient_from_center_cross_max
-  m_Shader: {fileID: 4800000, guid: 0d2f4afa582924196b83b003a8fa3aae, type: 3}
+  m_Name: 15_center_black_square
+  m_Shader: {fileID: 4800000, guid: bbdcb5f5c6ebb4e2cb5356360b8b04b8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -106,7 +106,7 @@ Material:
     - _Grid: 10
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.485
+    - _Offset: 0.5
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -115,6 +115,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _StepThreshold: 0.3
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
