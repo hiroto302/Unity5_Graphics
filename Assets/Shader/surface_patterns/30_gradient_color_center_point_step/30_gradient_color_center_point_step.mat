@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 29_gradient_color_center_point
-  m_Shader: {fileID: 4800000, guid: fffbb1d8fef554572ba948fbec7b9254, type: 3}
+  m_Name: 30_gradient_color_center_point_step
+  m_Shader: {fileID: 4800000, guid: e225a941c55c94ba5b90d008317b3605, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
