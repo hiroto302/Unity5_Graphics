@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 24_gradient_from_origin_color_invert
+  m_Name: 25_gradient_from_origin_color_invert_abs
   m_Shader: {fileID: 4800000, guid: ff6ff3f0ce401463fa51194b20f19d70, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
