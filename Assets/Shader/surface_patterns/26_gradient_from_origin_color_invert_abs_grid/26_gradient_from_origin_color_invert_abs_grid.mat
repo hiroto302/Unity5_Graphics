@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 25_gradient_from_origin_color_invert_abs
-  m_Shader: {fileID: 4800000, guid: bcd395818b5a14ed59febf7dbd42831a, type: 3}
+  m_Name: 26_gradient_from_origin_color_invert_abs_grid
+  m_Shader: {fileID: 4800000, guid: 8d9af677c7d5947fdbbc7c3015b09073, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -100,6 +100,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Grid: 5.29
     - _InvertBase: 0.491
     - _Metallic: 0
     - _OcclusionStrength: 1
