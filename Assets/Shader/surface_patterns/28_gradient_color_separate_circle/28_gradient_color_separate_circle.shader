@@ -1,4 +1,4 @@
-Shader "patterns/27_gradient_from_origin_color_invert_abs_grid_solid"
+Shader "patterns/28_gradient_color_separate_circle"
 {
     Properties
     {

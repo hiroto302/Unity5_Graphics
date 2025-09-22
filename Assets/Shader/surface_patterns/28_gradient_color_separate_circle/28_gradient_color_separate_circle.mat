@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 28_gradient_color_separate_circle
-  m_Shader: {fileID: 4800000, guid: 750def28daf8c4a358996877c784f476, type: 3}
+  m_Shader: {fileID: 4800000, guid: cee457912d05c470485baee42e7dc2f3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -102,7 +102,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Grid: 10
-    - _InvertBase: 0.5
+    - _InvertBase: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Origin: 0.5
