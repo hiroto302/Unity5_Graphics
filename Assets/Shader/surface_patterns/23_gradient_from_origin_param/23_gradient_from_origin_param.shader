@@ -49,10 +49,16 @@ Shader "patterns/23_gradient_from_origin_param"
                 return o;
             }
 
-            // 指定した原点からの距離（ユークリッド距離）を計算してグラデーション色を形成
             half4 frag (v2f i) : SV_Target
             {
-                float strength = length(i.uv - float2(_OriginX, _OriginY));
+                //NOTE: length() はユークリッド距離を計算する組み込み関数
+                // length(vec): ベクトルの長さ（原点からの距離）を計算
+                // float strength = length(i.uv - float2(_OriginX, _OriginY));
+
+                //NOTE: distance() は2点間の距離を計算する組み込み関数
+                // distance(vec1, vec2): vec1 と vec2 間の距離を計算
+                float strength = distance(float2(_OriginX, _OriginY), i.uv);
+
                 half4 col = half4(strength, strength, strength, 1.0);
                 return col;
             }
