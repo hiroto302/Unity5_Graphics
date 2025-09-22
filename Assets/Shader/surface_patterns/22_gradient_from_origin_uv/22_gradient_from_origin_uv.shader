@@ -1,8 +1,7 @@
-Shader "patterns/22_gradient_from_origin"
+Shader "patterns/22_gradient_from_origin_uv"
 {
     Properties
     {
-        _Separate("Separate", Range(0, 10)) = 10
     }
     SubShader
     {
@@ -35,8 +34,6 @@ Shader "patterns/22_gradient_from_origin"
                 float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
-
-            half _Separate;
 
             v2f vert (appdata input)
             {
