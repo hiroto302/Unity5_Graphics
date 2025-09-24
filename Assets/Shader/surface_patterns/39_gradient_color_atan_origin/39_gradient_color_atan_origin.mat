@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 38_gradient_color_atan
-  m_Shader: {fileID: 4800000, guid: 36c76fbb7338e4314841e76d64e0c9f2, type: 3}
+  m_Name: 39_gradient_color_atan_origin
+  m_Shader: {fileID: 4800000, guid: 40f7d2a5f6bc04d4dacc2526dde05c89, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
