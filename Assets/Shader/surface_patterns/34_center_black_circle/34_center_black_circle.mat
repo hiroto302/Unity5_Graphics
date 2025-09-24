@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 33_gradient_color_center_point_stretch_diamond_rotation
+  m_Name: 34_center_black_circle
   m_Shader: {fileID: 4800000, guid: 45355e840350c4ea2822ded5929d9ddb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
