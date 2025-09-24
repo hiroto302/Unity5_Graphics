@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 37_circle_sine_wave_xy
+  m_Name: 38_gradient_color_atan
   m_Shader: {fileID: 4800000, guid: 522a40ddff1104b81ad49313341c1211, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
