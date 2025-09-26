@@ -1,4 +1,4 @@
-Shader "patterns/39_gradient_color_atan_origin"
+Shader "patterns/40_gradient_color_atan_origin_normalize"
 {
     Properties
     {
