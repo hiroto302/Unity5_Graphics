@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 41_gradient_color_atan_origin_normalize_grid
+  m_Name: 42_gradient_color_atan_origin_normalize_sin
   m_Shader: {fileID: 4800000, guid: 5f7b1c1e0b4fb4ec9bb4d8624cf007ea, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
