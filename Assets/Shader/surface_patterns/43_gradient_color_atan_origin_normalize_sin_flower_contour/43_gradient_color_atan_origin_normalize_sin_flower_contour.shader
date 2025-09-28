@@ -81,7 +81,7 @@ Shader "patterns/43_gradient_color_atan_origin_normalize_sin_flower"
                 float distanceDifference = pixelDistance - radius;
 
                 // 半径との差を可視化（グレーが境界線、白黒が内外）
-                half4 col = half4(distanceDifference + 0.5, distanceDifference + 0.5, distanceDifference + 0.5, 1.0);
+                half4 col = half4(distanceDifference, distanceDifference, distanceDifference, 1.0);
                 return col;
             }
 
