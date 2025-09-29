@@ -1,0 +1,112 @@
+Shader "patterns/48_noise_abs"
+{
+    Properties
+    {
+        _NoiseScale ("Noise Scale", Range(1.0, 20.0)) = 10.0
+        _InvertBase ("Invert Base", Range(0, 1.0)) = 1.0
+    }
+    SubShader
+    {
+        Tags
+        {
+            "RenderType"="Opaque"
+            "RenderPipeline"="UniversalPipeline"
+        }
+
+        Pass
+        {
+            Name "ForwardUnlit"
+            Tags { "LightMode"="UniversalForward" }
+
+            HLSLPROGRAM
+
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            //	Classic Perlin 2D Noise
+            //	by Stefan Gustavson (https://github.com/stegu/webgl-noise)
+            float2 fade(float2 t)
+            {
+                return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+            }
+
+            float4 permute(float4 x)
+            {
+                return fmod(((x * 34.0) + 1.0) * x, 289.0);
+            }
+
+            float cnoise(float2 P)
+            {
+                float4 Pi = floor(P.xyxy) + float4(0.0, 0.0, 1.0, 1.0);
+                float4 Pf = frac(P.xyxy) - float4(0.0, 0.0, 1.0, 1.0);
+                Pi = fmod(Pi, 289.0); // To avoid truncation effects in permutation
+                float4 ix = Pi.xzxz;
+                float4 iy = Pi.yyww;
+                float4 fx = Pf.xzxz;
+                float4 fy = Pf.yyww;
+                float4 i = permute(permute(ix) + iy);
+                float4 gx = 2.0 * frac(i * 0.0243902439) - 1.0; // 1/41 = 0.024...
+                float4 gy = abs(gx) - 0.5;
+                float4 tx = floor(gx + 0.5);
+                gx = gx - tx;
+                float2 g00 = float2(gx.x, gy.x);
+                float2 g10 = float2(gx.y, gy.y);
+                float2 g01 = float2(gx.z, gy.z);
+                float2 g11 = float2(gx.w, gy.w);
+                float4 norm = 1.79284291400159 - 0.85373472095314 *
+                    float4(dot(g00, g00), dot(g01, g01), dot(g10, g10), dot(g11, g11));
+                g00 *= norm.x;
+                g01 *= norm.y;
+                g10 *= norm.z;
+                g11 *= norm.w;
+                float n00 = dot(g00, float2(fx.x, fy.x));
+                float n10 = dot(g10, float2(fx.y, fy.y));
+                float n01 = dot(g01, float2(fx.z, fy.z));
+                float n11 = dot(g11, float2(fx.w, fy.w));
+                float2 fade_xy = fade(Pf.xy);
+                float2 n_x = lerp(float2(n00, n01), float2(n10, n11), fade_xy.x);
+                float n_xy = lerp(n_x.x, n_x.y, fade_xy.y);
+                return 2.3 * n_xy;
+            }
+
+            float _NoiseScale;
+            float _InvertBase;
+
+
+            v2f vert (appdata input)
+            {
+                v2f o;
+
+                o.vertex = TransformObjectToHClip(input.vertex.xyz);
+                o.uv = input.uv;
+                return o;
+            }
+
+            half4 frag (v2f i) : SV_Target
+            {
+                // Perlin noise pattern
+                // cnoise()の戻り値は-1〜1の範囲
+                // uv(0〜1)の空間に_NoiseScale分のノイズパターンを繰り返す
+                // abs()で負の値を正に変換. 0の値のみ黒になる
+                float strength = _InvertBase - abs(cnoise(i.uv * _NoiseScale));
+                half4 col = half4(strength, strength, strength, 1.0);
+                return col;
+            }
+            ENDHLSL
+        }
+    }
+}
