@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 48_noise_abs
-  m_Shader: {fileID: 4800000, guid: 522b3eec0b94e45f09565059ae2cc955, type: 3}
+  m_Name: 49_noise_sin
+  m_Shader: {fileID: 4800000, guid: ce2106c2571df4a148c43779d6ddc6b3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -129,7 +129,7 @@ Material:
     - _Surface: 0
     - _Threshold: 0.25
     - _WaveAmplitude: 0.2
-    - _WaveFrequency: 100
+    - _WaveFrequency: 20
     - _WaveHeight: 0.1
     - _WhiteThreshold: 0.015
     - _WorkflowMode: 1
