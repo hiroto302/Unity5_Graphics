@@ -183,7 +183,11 @@ Shader "Sea/1_Raging_Sea_Small_Wave"
                 // elevation += cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed));
 
                 // step3: conoiseの結果に対して、高さを調整
-                elevation += cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed)) * _SmallWaveElevation;
+                // elevation += cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed)) * _SmallWaveElevation;
+
+                // step4: abs()で負の値を正に変換して、波が下に凹みを反転。その値を引くことで、波の谷や細かい凹を作成。結果的に、波の形状に近づく
+                // 前回までは、実際は 山の部分が連続するイメージだったが、谷の部分も作成されるイメージ
+                elevation -= abs(cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed))) * _SmallWaveElevation;
 
                 worldPos.y += elevation;
 
