@@ -20,6 +20,7 @@ Shader "Sea/0_raging_sea"
 
             #pragma vertex vert
             #pragma fragment frag
+
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             struct appdata
@@ -34,9 +35,6 @@ Shader "Sea/0_raging_sea"
                 float2 uv : TEXCOORD0;
             };
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-
             v2f vert (appdata i)
             {
                 v2f o;
@@ -47,7 +45,7 @@ Shader "Sea/0_raging_sea"
 
             half4 frag (v2f i) : SV_Target
             {
-                half col = half4(i.uv.x, i.uv.y, 1.0, 1.0);
+                half4 col = half4(i.uv.x, i.uv.y, 1.0, 1.0);
                 return col;
             }
             ENDHLSL
