@@ -4,6 +4,7 @@ Shader "Sea/0_raging_sea"
     {
         _BigWaveFrequencyX("Big Wave Frequency X", Range(1.0, 10.0)) = 4.0
         _BigWaveFrequencyZ("Big Wave Frequency Z", Range(1.0, 10.0)) = 1.5
+        _BigWaveSpeed("Big Wave Speed", Range(0.0, 3.0)) = 0.7
         _BigWaveElevation("Big Wave Elevation", Range(1.0, 5.0)) = 2.0
     }
     SubShader
@@ -40,14 +41,19 @@ Shader "Sea/0_raging_sea"
 
             float _BigWaveFrequencyX;
             float _BigWaveFrequencyZ;
+            float _BigWaveSpeed;
+            float _BigWaveElevation;
 
             v2f vert (appdata i)
             {
                 v2f o;
+                float time = _Time.y;
+
                 float3 worldPos = TransformObjectToWorld(i.vertex.xyz);
-                float elevation = sin(worldPos.x * _BigWaveFrequencyX) *
-                                    sin(worldPos.z * _BigWaveFrequencyZ) *
-                                    1.0;
+
+                float elevation = sin(worldPos.x * _BigWaveFrequencyX + time * _BigWaveSpeed) *
+                                    sin(worldPos.z * _BigWaveFrequencyZ + time * _BigWaveSpeed) *
+                                    _BigWaveElevation;
 
                 worldPos.y += elevation;
 
