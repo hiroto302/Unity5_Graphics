@@ -187,7 +187,14 @@ Shader "Sea/1_Raging_Sea_Small_Wave"
 
                 // step4: abs()で負の値を正に変換して、波が下に凹みを反転。その値を引くことで、波の谷や細かい凹を作成。結果的に、波の形状に近づく
                 // 前回までは、実際は 山の部分が連続するイメージだったが、谷の部分も作成されるイメージ
-                elevation -= abs(cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed))) * _SmallWaveElevation;
+                // elevation -= abs(cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed)) * _SmallWaveElevation);
+
+                // step5: 小波の影響をループで累積(step4の小波の中に小波を作成するイメージ)。1~3回ループの中で、それぞれ異なるcnoiseの値が生成されている。
+                // n なのは i が vert関数内で既に使われているので、同名を避けているだけ
+                for(float n = 1.0; n <= 3.0; n += 1.0)
+                {
+                    elevation -= abs(cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed)) * _SmallWaveElevation);
+                }
 
                 worldPos.y += elevation;
 
