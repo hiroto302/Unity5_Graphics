@@ -89,7 +89,7 @@ Material:
     - _BigWaveFrequencyX: 4
     - _BigWaveFrequencyY: 1.5
     - _BigWaveFrequencyZ: 1.5
-    - _BigWaveSpeed: 1.83
+    - _BigWaveSpeed: 0.75
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -112,8 +112,9 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SmallWaveElevation: 0.15
     - _SmallWaveFrequency: 3
-    - _SmallWaveSpeed: 0.19
+    - _SmallWaveSpeed: 0.2
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

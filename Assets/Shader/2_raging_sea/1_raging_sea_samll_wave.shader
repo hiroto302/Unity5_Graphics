@@ -17,6 +17,7 @@ Shader "Sea/1_Raging_Sea_Small_Wave"
         // small wave
         _SmallWaveFrequency("Small Wave Frequency", Range(1.0, 10.0)) = 3.0
         _SmallWaveSpeed("Small Wave Speed", Range(0.0, 3.0)) = 0.2
+        _SmallWaveElevation("Small Wave Elevation", Range(0.0, 2.0)) = 0.15
     }
     SubShader
     {
@@ -162,6 +163,7 @@ Shader "Sea/1_Raging_Sea_Small_Wave"
 
             float _SmallWaveFrequency;
             float _SmallWaveSpeed;
+            float _SmallWaveElevation;
 
             v2f vert (appdata i)
             {
@@ -178,7 +180,10 @@ Shader "Sea/1_Raging_Sea_Small_Wave"
                 // elevation += cnoise(float3(worldPos.xz * 3.0, 0));
 
                 // step2: 引数3つ目に時間を入れて、波をアニメーション (elevation 作成時のアニメーションとは別に小波を動かすイメージ)
-                elevation += cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed));
+                // elevation += cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed));
+
+                // step3: conoiseの結果に対して、高さを調整
+                elevation += cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed)) * _SmallWaveElevation;
 
                 worldPos.y += elevation;
 
