@@ -191,9 +191,16 @@ Shader "Sea/1_Raging_Sea_Small_Wave"
 
                 // step5: 小波の影響をループで累積(step4の小波の中に小波を作成するイメージ)。1~3回ループの中で、それぞれ異なるcnoiseの値が生成されている。
                 // n なのは i が vert関数内で既に使われているので、同名を避けているだけ
+                // for(float n = 1.0; n <= 3.0; n += 1.0)
+                // {
+                //     elevation -= abs(cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed)) * _SmallWaveElevation);
+                // }
+
+                // step6: 累積するだけど奇妙な動きになってしまうので、iを利用して、周波数(SmallWavesFrequency)と振幅(SmallWavesElevation)を調整
+                // ポイントは、周波数にiをかけることで、ループごとに周波数が高くなり（細かい波）、振幅をiで割ることで、ループごとに振幅が小さくなる（細かい波の影響が小さくなる）
                 for(float n = 1.0; n <= 3.0; n += 1.0)
                 {
-                    elevation -= abs(cnoise(float3(worldPos.xz * _SmallWaveFrequency, time * _SmallWaveSpeed)) * _SmallWaveElevation);
+                    elevation -= abs(cnoise(float3(worldPos.xz * _SmallWaveFrequency * n, time * _SmallWaveSpeed)) * _SmallWaveElevation / n);
                 }
 
                 worldPos.y += elevation;
