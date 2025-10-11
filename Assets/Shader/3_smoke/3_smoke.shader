@@ -3,7 +3,12 @@ Shader "smoke/3_smoke"
     Properties
     {
         _PerlinTexture ("Perlin Texture", 2D) = "white" {}
-        _SmokeSpeed ("Smoke Speed", Range(0.0, 0.5)) = 0.03
+
+        _TwistStrength ("Twist Strength", Range(0.0, 1.0)) = 0.2
+        _AngleScale ("Angle Scale", Range(1.0, 20.0)) = 10.0
+        _SmokeVerticesSpeed ("Smoke Vertices Speed", Range(0.0, 0.1)) = 0.001
+
+        _SmokeFragmentSpeed ("Smoke Fragment Speed", Range(0.0, 0.5)) = 0.03
     }
 
     SubShader
@@ -37,7 +42,10 @@ Shader "smoke/3_smoke"
 
             CBUFFER_START(UnityPerMaterial)
                 float4 _PerlinTexture_ST;
-                float _SmokeSpeed;
+                float _SmokeFragmentSpeed;
+                float _TwistStrength;
+                float _AngleScale;
+                float _SmokeVerticesSpeed;
             CBUFFER_END
 
             float2 rotate2D(float2 uv, float angle)
@@ -64,12 +72,25 @@ Shader "smoke/3_smoke"
             {
                 v2f o;
 
+                float time = _Time.y;
+
                 // ① シンプルなZ軸回転
                     // Three.jsとは、生成したPlane のローカル座標が異なることに注意
                     // Unity の場合、Plane をZ軸を中心に回転させる必要がある
+                // float3 newPosition = input.vertex.xyz;
+                // float angle = newPosition.z;
+                // newPosition.xy = rotate2D(newPosition.xy, angle);
+
+                // ② Twist with Perlin Noise
                 float3 newPosition = input.vertex.xyz;
-                float angle = 2.0;
+                float twistPerlin = SAMPLE_TEXTURE2D_LOD(_PerlinTexture,
+                                                        sampler_PerlinTexture,
+                                                        float2(0.5, input.uv.y * _TwistStrength - time * _SmokeVerticesSpeed),
+                                                        0)
+                                                        .r;
+                float angle = twistPerlin * _AngleScale;
                 newPosition.xy = rotate2D(newPosition.xy, angle);
+
 
                 o.vertex = TransformObjectToHClip(newPosition);
                 o.uv = input.uv;
@@ -82,7 +103,7 @@ Shader "smoke/3_smoke"
 
                 float2 smokeUV = i.uv * _PerlinTexture_ST.xy + _PerlinTexture_ST.zw;
 
-                smokeUV.y -= time * _SmokeSpeed;
+                smokeUV.y -= time * _SmokeFragmentSpeed;
 
                 float4 color = SAMPLE_TEXTURE2D(
                     _PerlinTexture,
