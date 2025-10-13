@@ -42,6 +42,7 @@ Shader "smoke/3_smoke"
             #pragma fragment frag
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Assets/Shader/Includes/Rotate2D.hlsl"
 
             TEXTURE2D(_PerlinTexture);
             SAMPLER(sampler_PerlinTexture);
@@ -54,14 +55,6 @@ Shader "smoke/3_smoke"
                 float _SmokeVerticesSpeed;
                 float _WindSpeed;
             CBUFFER_END
-
-            float2 rotate2D(float2 uv, float angle)
-            {
-                float s = sin(angle);
-                float c = cos(angle);
-                float2x2 rotMatrix = float2x2(c, -s, s, c);
-                return mul(rotMatrix, uv);
-            }
 
             struct appdata
             {
